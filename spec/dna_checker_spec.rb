@@ -19,6 +19,15 @@ describe DnaChecker do
   let(:other_mutant_dna) do
      ["ATGCGA", "CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]
   end
+  let(:diagonally_mutant_dna) do
+    # Dna with one right to left and one left to right diagonal pattern
+     ["ATGCGA",
+      "CAGGGC",
+      "TTGTGT",
+      "AGAAGG",
+      "CTCCTA",
+      "TCACTG"]
+  end
   let(:non_square_dna) { %w[A ATG GAC] }
   let(:invalid_letters_dna) { %w[XYZ ATG GAC] }
 
@@ -34,6 +43,7 @@ describe DnaChecker do
         checker = DnaChecker.new
         expect(checker.is_mutant?(mutant_dna)).to be(true)
         expect(checker.is_mutant?(other_mutant_dna)).to be(true)
+        expect(checker.is_mutant?(diagonally_mutant_dna)).to be(true)
       end
     end
 
