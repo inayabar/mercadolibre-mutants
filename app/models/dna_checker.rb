@@ -1,4 +1,3 @@
-require 'byebug'
 class DnaChecker
   attr_accessor :dna
   alias :rows :dna
