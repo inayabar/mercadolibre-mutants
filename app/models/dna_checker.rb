@@ -5,9 +5,9 @@ class DnaChecker
   SUPPORTED_LETTERS = %w[A T C G].freeze
 
   def is_mutant?(dna)
-    raise DnaCheckerErrors::NotSquareMatrix unless valid_matrix?(dna)
-    raise DnaCheckerErrors::InvalidLetters unless valid_letters_in_matrix?(dna)
     self.dna = dna.map { |row| row.split('') } # Convert array of strings to matrix and assign to instance variable
+    raise DnaCheckerErrors::NotSquareMatrix unless valid_matrix?
+    raise DnaCheckerErrors::InvalidLetters unless valid_letters_in_matrix?
     invalid_sequence_count > 1
   end
 
@@ -62,11 +62,11 @@ class DnaChecker
     end
   end
 
-  def valid_matrix?(dna)
+  def valid_matrix?
     dna.all? { |row| row.size == dna.size }
   end
 
-  def valid_letters_in_matrix?(dna)
+  def valid_letters_in_matrix?
     dna.all? { |row| row.all? { |letter| letter.in? SUPPORTED_LETTERS } }
   end
 end
