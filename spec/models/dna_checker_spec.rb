@@ -1,36 +1,7 @@
 require 'rails_helper'
+require 'shared_examples.rb'
 describe DnaChecker do
-  let(:non_mutant_dna) do
-    %w[ATGCGA
-       CAGTGC
-       TTATTT
-       AGACGG
-       GCGTCA
-       TCACTG]
-  end
-  let(:mutant_dna) do
-    %w[ATGCGA
-       CAGTGC
-       TTATTT
-       AGAAGT
-       GCGTCA
-       TCCCCG]
-  end
-  let(:other_mutant_dna) do
-    %w[ATGCGA CAGTGC TTATGT AGAAGG CCCCTA TCACTG]
-  end
-  let(:diagonally_mutant_dna) do
-    # Dna with one right to left and one left to right diagonal pattern
-    %w[ATGCGA
-       CAGGGC
-       TTGTGT
-       AGAAGG
-       CTCCTA
-       TCACTG]
-  end
-  let(:non_square_dna) { %w[A ATG GAC] }
-  let(:invalid_letters_dna) { %w[XYZ ATG GAC] }
-
+  include_context "shared dna examples"
   describe 'is_mutant?' do
     context 'when the dna does not contain mutant matching pattern' do
       it 'returns false' do
