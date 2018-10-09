@@ -17,21 +17,21 @@ describe DnaChecker do
        TCCCCG]
   end
   let(:other_mutant_dna) do
-     ["ATGCGA", "CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]
+    %w[ATGCGA CAGTGC TTATGT AGAAGG CCCCTA TCACTG]
   end
   let(:diagonally_mutant_dna) do
     # Dna with one right to left and one left to right diagonal pattern
-     ["ATGCGA",
-      "CAGGGC",
-      "TTGTGT",
-      "AGAAGG",
-      "CTCCTA",
-      "TCACTG"]
+    %w[ATGCGA
+       CAGGGC
+       TTGTGT
+       AGAAGG
+       CTCCTA
+       TCACTG]
   end
   let(:non_square_dna) { %w[A ATG GAC] }
   let(:invalid_letters_dna) { %w[XYZ ATG GAC] }
 
-  describe '#is_mutant?' do
+  describe 'is_mutant?' do
     context 'when the dna does not contain mutant matching pattern' do
       it 'returns false' do
         expect(DnaChecker.new.is_mutant?(non_mutant_dna)).to be(false)

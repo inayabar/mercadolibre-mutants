@@ -1,12 +1,13 @@
 class DnaChecker
   attr_accessor :dna
-  alias :rows :dna
+  alias rows dna
   SUPPORTED_LETTERS = %w[A T C G].freeze
 
   def is_mutant?(dna)
     self.dna = dna.map { |row| row.split('') } # Convert array of strings to matrix and assign to instance variable
     raise DnaCheckerErrors::NotSquareMatrix unless valid_matrix?
     raise DnaCheckerErrors::InvalidLetters unless valid_letters_in_matrix?
+
     invalid_sequence_count > 1
   end
 
