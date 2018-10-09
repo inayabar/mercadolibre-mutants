@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181008234403) do
+ActiveRecord::Schema.define(version: 20181009001746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(version: 20181008234403) do
     t.string "dna_hash"
     t.boolean "alien"
     t.index ["dna_hash"], name: "index_dnas_on_dna_hash"
+  end
+
+  create_table "stats", force: :cascade do |t|
+    t.integer "count_mutant_dna", default: 0
+    t.integer "count_human_dna", default: 0
   end
 
 end

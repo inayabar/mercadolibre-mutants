@@ -8,4 +8,8 @@ class MutantsController < ApplicationController
   rescue DnaCheckerErrors::Standard => e
     render json: { error: e.message }, status: :bad_request
   end
+
+  def stats
+    render json: Stats.obtain_last
+  end
 end
